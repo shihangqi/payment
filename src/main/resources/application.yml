@@ -1,0 +1,53 @@
+server:
+  port: 8000
+mybatis:
+  #config-location: classpath:mybatis/mybatis.cfg.xml
+  type-aliases-package: com.shqblog.entity   # entity����·��
+  mapper-locations: classpath:mybatis/mapper/**/*.xml    # mapperӳ���ļ�
+  configuration:
+    #    mapUnderscoreToCamelCase: true       #  �����շ�������
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+spring:
+  #  profiles: dev
+  application:
+    name: blog-pay
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/pay
+    username: root
+    password: root
+    dbcp2:
+      min-idle: 5                     # ���ݿ����ӳص���Сά��������
+      initial-size: 5                 # ��ʼ��������
+      max-total: 10                    # ���������
+      max-wait-millis: 200            # �ȴ����ӻ�ȡ�����ʱʱ��
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    joda-date-time-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+#eureka:
+#  client: #�ͻ���ע���eureka�����б���
+#    service-url:
+#      defaultZone: http://${docker.url}:6731/eureka/
+#      #��΢�����б���ע���������spring.application.name������
+#  instance:
+#    instance-id: blog-pay:8001
+#    prefer-ip-address: true
+#  enabled: true
+#  register-with-eureka: true
+#  fetch-registry: true
+info:
+  app.name: shablog
+  company.name: www.shqblog.com
+  build.artifactId: $project.artifactId$
+  bulid.version: $project.version$
+alipay:
+  serverUrl: https://openapi.alipaydev.com/gateway.do
+  #  appId: 2016101100662295
+  #  privateKey: MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDMGH8emYUJwBwBPgua9tnKhccRX8MJBhuRGoxthEXoKq+lhMyAUOcyhmfP7fV1ja1SYhH5AA4veT147uFy04nYEo7h3OXoAv6CkB3JcjaGMPQb98RlRatyYaxsfY4TamOpTowM9z6dkkt7vDGhsMt61egLEEkdsJk7AjOjW0ihpDoo2u4TTc7NItR1/QeJSZpc7F1ZoiU7FIhxgN71VfD2G2lyTVAm8PhjOlST2FTXQTuDoHI/EVqdEpPNRO5mjgu1DSC0q9jk0vrP4lbWZKTcRy3GL1vjwkVB7COghjlIHzjxKDiwFqnSF5HnjwLibjNDp4Yc9j+JkEpli9Z6xHSvAgMBAAECggEATbVyCTuYvPqpbwuprYoZqJPBFOtqPjBWJKyAFV7MozZFhHcIyj6DmOg19KR81hJokLqIb09HF2pJLpd9vZOvo1aFkpfh7bHeJ+YpgT78ZaGUAGYZIBojyjxIQ1KW2uuiIJ+okXM+Iw7FsMoZ959yCkYRwMylmilYXnBbKvKht/E5/vx5ATA3oM0yL41+ml4fLooU2HmYe4zhDFD/+0lfEzKf+AxZZWVDvOv6e1l/62pTnMF8nr61sxdIayCkI1l3vKfh/CkuP37V6Sg4KFX7Tc4lIXw9TaF1hQmBeQDxhbSnc2Aq6ILXkvyeuRu+4PPGars1IfToKrkxvkDtpjk4WQKBgQD5U86fT54Hd5QVB7JzBEsR2igPVxBkkrFUfwjQrikYEWeweUe79M8HmohTr2rgMvd/EfGB/h1GAhniS5rGvZ0ZP78VBy/Bhj8sHAn414VnRSjfKnBR9ai4EoK1eIwwovvBYsJkqZsei459+JRrHAAm5pMDHTsPN4zJLPrvOjUePQKBgQDRjsxE8IHW5bkRRZCzZsCx49Zl7dIO52LWc8bK8YGq1WX0l8KvDAh3Iz8oKVbh5267Fsj5A0VunLSY5oiK8wxOx8CdYS9JO5+E9XZWIZvKGoumtWvjse54oXlt910p80gfMVRVTk94IioPL63s46bhhp+za81YrydwMjqqLVXZWwKBgQD4WIkkWIrBR1PCCtOuCyW3V4S1mvRiKVfnIU4nhoK6TYPp3TQdvQCGw19tc/pR7ZJnCPl1kSeZdzhPFx3JPk+AOeXcTTc9XboI9rjcG9juf43xlHUivj5bc1ys47FINN/txbB50hMHvtylD3jOo6pnFR50aKZORve930boCSOlxQKBgQCz0G9Q/Hq9FlOuEV4vwoy4WANBZUcoyL1TvPaob4DPQNuCfLJuF8ovyIvJ/2bw4vBuEwgSPA9Y8Zg51x7088bs1pRdtuWnVkT0Btgq4h3W1t5cBzJzp9szoYMbq/VCKOIK+f4eUNr5/37NlyELsvAgdq8Uev0yCuGxcThLjCktHwKBgQDyoqZSD36IrUQ8hL8nc9NeneyQTprRIbmmOz869ni95ASPSnuuPYMFy41XG1t93cdNm+s29OKxfQGB07AOBxf+USfMR4+tMOwf8mIIAMJxDOKvCWELKO9WhIozPW30Sb1MX1vJyJGKk5A/tcXUEj42BtMVaqVQ9zKQ7t32Bdv0eg==
+  formatL: json
+  charset: utf-8
+  #  alipayPulicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6thfYvIGY8EpxISusiS4o39t2tna6PF8tv4NRQiuUMbhIFfLqjjcg98IoXOFRQomF0uOp1kL2PWEuJZHNWMVU7SRltuNwFA6YY0OAuLuwfAPjBVo4yjGH3Gfi4GXiiiDmS+fCilpHicZNkxKo58lOIPbt7ghHcwCMDLdzS59q/GFJnm32rQYM0QtdbJEClacoP3/lLPvnFB9B5XHrcVKIb/he/yMXxDXFdMGNHaamY4HbzIjlLwrRGQeGuH9Kpis3wuZdrX+7RcCHO/LQD6aoUpO0HHXcp1nIMfVyzrjNeD6NBUJ5PfcPV/w0XRqAVNzNfxDPl2YyK1zV/SfzGl2QQIDAQAB
+  signType: RSA2

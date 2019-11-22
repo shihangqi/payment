@@ -1,0 +1,36 @@
+package com.qingfeng.payment.properties;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
+
+/**
+ * @author shihangqi
+ * @date 2019/11/21 - 21:07
+ */
+@Data
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@Component
+@ConfigurationProperties(prefix = "alipay")
+public class AliPayProperties {
+    //支付宝网关（固定）
+    private String serverUrl;
+    //APPID 即创建应用后生成
+    private String appId = "2016101100662295";
+    //开发者私钥，由开发者自己生成     如果没有配置则使用默认值
+    private String privateKey = "MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDMGH8emYUJwBwBPgua9tnKhccRX8MJBhuRGoxthEXoKq+lhMyAUOcyhmfP7fV1ja1SYhH5AA4veT147uFy04nYEo7h3OXoAv6CkB3JcjaGMPQb98RlRatyYaxsfY4TamOpTowM9z6dkkt7vDGhsMt61egLEEkdsJk7AjOjW0ihpDoo2u4TTc7NItR1/QeJSZpc7F1ZoiU7FIhxgN71VfD2G2lyTVAm8PhjOlST2FTXQTuDoHI/EVqdEpPNRO5mjgu1DSC0q9jk0vrP4lbWZKTcRy3GL1vjwkVB7COghjlIHzjxKDiwFqnSF5HnjwLibjNDp4Yc9j+JkEpli9Z6xHSvAgMBAAECggEATbVyCTuYvPqpbwuprYoZqJPBFOtqPjBWJKyAFV7MozZFhHcIyj6DmOg19KR81hJokLqIb09HF2pJLpd9vZOvo1aFkpfh7bHeJ+YpgT78ZaGUAGYZIBojyjxIQ1KW2uuiIJ+okXM+Iw7FsMoZ959yCkYRwMylmilYXnBbKvKht/E5/vx5ATA3oM0yL41+ml4fLooU2HmYe4zhDFD/+0lfEzKf+AxZZWVDvOv6e1l/62pTnMF8nr61sxdIayCkI1l3vKfh/CkuP37V6Sg4KFX7Tc4lIXw9TaF1hQmBeQDxhbSnc2Aq6ILXkvyeuRu+4PPGars1IfToKrkxvkDtpjk4WQKBgQD5U86fT54Hd5QVB7JzBEsR2igPVxBkkrFUfwjQrikYEWeweUe79M8HmohTr2rgMvd/EfGB/h1GAhniS5rGvZ0ZP78VBy/Bhj8sHAn414VnRSjfKnBR9ai4EoK1eIwwovvBYsJkqZsei459+JRrHAAm5pMDHTsPN4zJLPrvOjUePQKBgQDRjsxE8IHW5bkRRZCzZsCx49Zl7dIO52LWc8bK8YGq1WX0l8KvDAh3Iz8oKVbh5267Fsj5A0VunLSY5oiK8wxOx8CdYS9JO5+E9XZWIZvKGoumtWvjse54oXlt910p80gfMVRVTk94IioPL63s46bhhp+za81YrydwMjqqLVXZWwKBgQD4WIkkWIrBR1PCCtOuCyW3V4S1mvRiKVfnIU4nhoK6TYPp3TQdvQCGw19tc/pR7ZJnCPl1kSeZdzhPFx3JPk+AOeXcTTc9XboI9rjcG9juf43xlHUivj5bc1ys47FINN/txbB50hMHvtylD3jOo6pnFR50aKZORve930boCSOlxQKBgQCz0G9Q/Hq9FlOuEV4vwoy4WANBZUcoyL1TvPaob4DPQNuCfLJuF8ovyIvJ/2bw4vBuEwgSPA9Y8Zg51x7088bs1pRdtuWnVkT0Btgq4h3W1t5cBzJzp9szoYMbq/VCKOIK+f4eUNr5/37NlyELsvAgdq8Uev0yCuGxcThLjCktHwKBgQDyoqZSD36IrUQ8hL8nc9NeneyQTprRIbmmOz869ni95ASPSnuuPYMFy41XG1t93cdNm+s29OKxfQGB07AOBxf+USfMR4+tMOwf8mIIAMJxDOKvCWELKO9WhIozPW30Sb1MX1vJyJGKk5A/tcXUEj42BtMVaqVQ9zKQ7t32Bdv0eg==";
+    //参数返回格式，只支持 json
+    private String format;
+    //编码集，支持 GBK/UTF-8
+    private String charset;
+    //支付宝公钥，由支付宝生成
+    private String alipayPulicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6thfYvIGY8EpxISusiS4o39t2tna6PF8tv4NRQiuUMbhIFfLqjjcg98IoXOFRQomF0uOp1kL2PWEuJZHNWMVU7SRltuNwFA6YY0OAuLuwfAPjBVo4yjGH3Gfi4GXiiiDmS+fCilpHicZNkxKo58lOIPbt7ghHcwCMDLdzS59q/GFJnm32rQYM0QtdbJEClacoP3/lLPvnFB9B5XHrcVKIb/he/yMXxDXFdMGNHaamY4HbzIjlLwrRGQeGuH9Kpis3wuZdrX+7RcCHO/LQD6aoUpO0HHXcp1nIMfVyzrjNeD6NBUJ5PfcPV/w0XRqAVNzNfxDPl2YyK1zV/SfzGl2QQIDAQAB";
+    //商户生成签名字符串所使用的签名算法类型，目前支持 RSA2 和 RSA，推荐使用 RSA2
+    private String signType;
+
+}
