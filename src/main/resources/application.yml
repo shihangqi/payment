@@ -2,11 +2,11 @@ server:
   port: 8000
 mybatis:
   #config-location: classpath:mybatis/mybatis.cfg.xml
-  type-aliases-package: com.shqblog.entity   # entity����·��
+  type-aliases-package: com.qingfeng.payment   # entity����·��
   mapper-locations: classpath:mybatis/mapper/**/*.xml    # mapperӳ���ļ�
-  configuration:
-    #    mapUnderscoreToCamelCase: true       #  �����շ�������
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#  configuration:
+#    mapUnderscoreToCamelCase: true       #  �����շ�������
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 spring:
   #  profiles: dev
@@ -14,15 +14,27 @@ spring:
     name: blog-pay
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/pay
     username: root
     password: root
-    dbcp2:
-      min-idle: 5                     # ���ݿ����ӳص���Сά��������
-      initial-size: 5                 # ��ʼ��������
-      max-total: 10                    # ���������
-      max-wait-millis: 200            # �ȴ����ӻ�ȡ�����ʱʱ��
+    initialSize: 10
+    minIdle: 10
+    maxActive: 100
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1
+    testWhileIdle: true
+    testOnBorrow: true
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    filters: stat,wall
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+#    stat-view-servlet:
+#      allow: 127.0.0.1
+  #        allow: 140.143.39.21
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     joda-date-time-format: yyyy-MM-dd HH:mm:ss

@@ -37,7 +37,8 @@ public class PayController {
     private AliPayProperties aliPayProperties;
 
     @PostMapping("/add")
-    public boolean add(@RequestBody PayInfo dept){
+    public boolean add(PayInfo dept){
+        System.out.println(dept);
         return payService.add(dept);
     }
 
@@ -97,7 +98,18 @@ public class PayController {
     @PostMapping("/alipayNotify")
     public void alipayNotify(AlipayNotifyUrlParameters alipayNotifyUrlParameters){
         System.out.println("alipayNotifyUrlParameters:\t"+alipayNotifyUrlParameters);
-        //Field error in object 'alipayNotifyUrlParameters' on field 'notify_time': rejected value [2019-11-25 09:18:29]; codes [typeMismatch.alipayNotifyUrlParameters.notify_time,typeMismatch.notify_time,typeMismatch.java.util.Date,typeMismatch]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [alipayNotifyUrlParameters.notify_time,notify_time]; arguments []; default message [notify_time]]; default message [Failed to convert property value of type 'java.lang.String' to required type 'java.util.Date' for property 'notify_time'; nested exception is org.springframework.core.convert.ConversionFailedException: Failed to convert from type [java.lang.String] to type [@com.fasterxml.jackson.annotation.JsonFormat java.util.Date] for value '2019-11-25 09:18:29'; nested exception is java.lang.IllegalArgumentException]]
+        //AlipayNotifyUrlParameters(notify_time=Mon Nov 25 10:24:37 GMT 2019,
+        // notify_type=trade_status_sync, notify_id=2019112500222102436033401000600131,
+        // charset=utf-8, version=1.0, sign_type=RSA2,
+        // sign=d91t2OMerapxkJXCSCyoLEILeGa6rGBABRXqADMFUwdwVvZhBq4BjIiEwSgeQ7E2s/0IXD5UHpMsl8PXXnSLb84q9dCxFQoJlKJjOUuauN2I2URuVVCZcKSJBosBtG6ybPVGS4BctzbydSTeLilEuqgfsMIV44fswlBJq3HIlW8ofUgypXIdBj15NzJiR5eahhcbZ9fJl1+5UsUyDUwKkVR7fLPiTkp6/0qXhatJYtmm7mq1rgL31iRl9YsMo23pk9LEynAKI3z4iLwiDAe9Jck+oObJBl3cM7rszU2XjQHZa0Qo5qcaYEVQJXwgcfLeb+3f8CuDZycHng7KpAVVlA==,
+        // auth_app_id=2016101100662295, trade_no=2019112522001433401000037735,
+        // app_id=2016101100662295, out_trade_no=20150320010101016, out_biz_no=null,
+        // buyer_id=2088102179133401, seller_id=2088102179110312, trade_status=TRADE_SUCCESS,
+        // total_amount=500.00, receipt_amount=500.00, invoice_amount=500.00, buyer_pay_amount=500.00,
+        // point_amount=0.00, refund_fee=null, subject=Iphone6 64G, body=Iphone6 64G,
+        // gmt_create=2019-11-25 10:24:27, gmt_payment=2019-11-25 10:24:35, gmt_refund=null, gmt_close=null,
+        // fund_bill_list=[{"amount":"500.00","fundChannel":"ALIPAYACCOUNT"}],
+        // voucher_detail_list=null, passback_params=merchantBizType%3d3C%26merchantBizNo%3d2016010101111)
     }
 
 

@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.qingfeng.payment.entity">
-    <select id="findById" resultType="com.qingfeng.payment.entity.PayInfo" parameterType="Long">
+<mapper namespace="com.qingfeng.payment.dao.PayInfoMapper">
+    <select id="findById" resultType="PayInfo" parameterType="Long">
 		select * from payinfo where id=#{id};
 	</select>
-    <select id="findAll" resultType="com.qingfeng.payment.entity.PayInfo">
+    <select id="findAll" resultType="PayInfo">
 		select * from payinfo;
 	</select>
-    <insert id="addDept" parameterType="com.qingfeng.payment.entity.PayInfo">
+    <insert id="addDept" parameterType="PayInfo">
 		insert into
 		payinfo
-		(id,payNumber,information,not
-
-		e,createTime,updateTime)
+		(id,payNumber,information,note,createTime,updateTime)
 		values(#{id},#{payNumber},#{information},#{note},#{createTime},#{updateTime});
 	</insert>
 </mapper>
