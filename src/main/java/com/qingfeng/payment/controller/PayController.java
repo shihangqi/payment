@@ -97,6 +97,7 @@ public class PayController {
     @PostMapping("/alipayNotify")
     public void alipayNotify(AlipayNotifyUrlParameters alipayNotifyUrlParameters){
         System.out.println("alipayNotifyUrlParameters:\t"+alipayNotifyUrlParameters);
+        //Field error in object 'alipayNotifyUrlParameters' on field 'notify_time': rejected value [2019-11-25 09:18:29]; codes [typeMismatch.alipayNotifyUrlParameters.notify_time,typeMismatch.notify_time,typeMismatch.java.util.Date,typeMismatch]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [alipayNotifyUrlParameters.notify_time,notify_time]; arguments []; default message [notify_time]]; default message [Failed to convert property value of type 'java.lang.String' to required type 'java.util.Date' for property 'notify_time'; nested exception is org.springframework.core.convert.ConversionFailedException: Failed to convert from type [java.lang.String] to type [@com.fasterxml.jackson.annotation.JsonFormat java.util.Date] for value '2019-11-25 09:18:29'; nested exception is java.lang.IllegalArgumentException]]
     }
 
 

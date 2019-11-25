@@ -14,6 +14,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper=false)
 
+
 public class PayInfo extends BaseEntity<Long>{
     /**
      *

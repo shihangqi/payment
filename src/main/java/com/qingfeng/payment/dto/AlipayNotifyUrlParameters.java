@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.Accessors;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -18,7 +19,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-public class    AlipayNotifyUrlParameters {
+public class AlipayNotifyUrlParameters {
 
     //公共参数
 
@@ -27,7 +28,7 @@ public class    AlipayNotifyUrlParameters {
      * 描述：通知的发送时间。格式为yyyy-MM-dd HH:mm:ss
      * 示例：2015-14-27 15:45:58
      */
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date notify_time;
     /**
      * 是否必填：是
